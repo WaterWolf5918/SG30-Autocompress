@@ -1,6 +1,6 @@
 name: SG30DLL
 version: '${version}'
-main: tk.waterwolf.SG30DLL
+main: net.waterwolf.SG30DLL
 softdepend: [vault]
 api-version: '1.20'
 commands:
@@ -10,6 +10,18 @@ commands:
     aliases: [comp, autocomp,autocompress,ac]
     --permission: SG30DLL.compress.player
     permission-message: You do not have permission!
+  storeHeldItem:
+    description: IDK
+    usage: /storehelditem [name]
+    permission-message: You do not have permission!
+  restoreItem:
+      description: IDK
+      usage: /restoreitem [name]
+      permission-message: You do not have permission!
+  listSavedItems:
+      description: IDK
+      usage: /listSavedItems
+      permission-message: You do not have permission!
 permissions:
   SGDLL.compress.player:
     description: Allows player usage of the /compress command

@@ -13,9 +13,12 @@ import net.waterwolf.events.*;
 
 public final class SG30DLL extends JavaPlugin {
     // public FileConfiguration config = getConfig();
+    private static GUIHandler CompressGUI;
     private static Economy econ = null;
     private static Permission perms = null;
     private static SG30DLL plugin;
+
+
     @Override
     public void onEnable() {
         plugin = this;
@@ -33,6 +36,7 @@ public final class SG30DLL extends JavaPlugin {
         FusionLib.sendToConsole("Hooked into Vault", true);
         FusionLib.sendToConsole("Loading events...", true);
         registerEvents();
+        CompressGUI = new GUIHandler(this);
         FusionLib.sendToConsole("Loaded events!", true);
 
         FusionLib.sendToConsole("Loading commands...", true);
@@ -51,11 +55,16 @@ public final class SG30DLL extends JavaPlugin {
         // Register the events here!
         new OnItemPickup(this);
         new OnPlayerJoin(this);
+
+
     }
 
     public void registerCommands() {
         // Register the commands here!
         new Compress(this);
+        new storeHeldItem(this);
+        new restoreItem(this);
+        new listSavedItems(this);
     }
 
     @Override
@@ -93,6 +102,8 @@ public final class SG30DLL extends JavaPlugin {
     public static SG30DLL getPlugin(){
         return plugin;
     }
+
+    public static GUIHandler getCompressGUI() { return CompressGUI; }
 }
 
 

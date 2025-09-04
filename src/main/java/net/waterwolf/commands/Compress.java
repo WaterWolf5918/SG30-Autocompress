@@ -1,15 +1,24 @@
 package net.waterwolf.commands;
 
 
+import net.waterwolf.GUIHandler;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import net.milkbowl.vault.permission.Permission;
 import net.waterwolf.FusionLib;
 import net.waterwolf.SG30DLL;
+
+import java.util.HashMap;
 
 public class Compress implements CommandExecutor {
 
@@ -68,17 +77,39 @@ public class Compress implements CommandExecutor {
                 case "admin":
                     String subSubCommand = args[1].toLowerCase();
                     switch (subSubCommand){
-                        case "killswitch":
+                        case "gui":
+                            if (args[2].isEmpty()) break;
                             if (perms.playerHas(player,"SGDLL.compress.admin")){
-                            //     for (ItemStack num : OreLib.CompressedMEGA()) {
-                            //         player.getInventory().addItem(num);
-                            //    }
+//                                HashMap<Integer, ItemStack> items = new HashMap<Integer, ItemStack>();
+//                                Inventory inv = Bukkit.createInventory(player, 9,args[2]);
+//
+//                                ItemStack black = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+//                                ItemStack blue = new ItemStack(Material.BLUE_STAINED_GLASS_PANE);
+//                                ItemStack orange = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
+//                                ItemStack[] items = new ItemStack[]
+//                                        {
+//                                                blue,null,blue,
+//                                                black,black,black,
+//                                                orange,null,orange
+//                                        };
+//                                inv.setContents(items);
+//
+//
+//                                player.openInventory(inv);
+//                                inv.addItem(new ItemStack(Material.DROPPER));
+                                SG30DLL.getCompressGUI().showCompressGUI(player,args[2]);
+                            }else{
+                                FusionLib.sendToPlayer("You don't have perms for this command (did toni forget to add them?)", player, false);
+                            }
+                            break;
+                        case "remove":
+                            if (perms.playerHas(player,"SGDLL.compress.admin")){
+
 
                             }else{
                                 FusionLib.sendToPlayer("You don't have perms for this command (did toni forget to add them?)", player, false);
                             }
                             break;
-                            
                     }
                     break;
                 

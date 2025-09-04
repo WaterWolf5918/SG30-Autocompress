@@ -30,19 +30,37 @@ public class CompressTab implements TabCompleter{
                 return argsList;
             case 2:
                 List<String> argsList2 = new ArrayList<>();
-                argsList2.add("on");
-                argsList2.add("off");
-                if (admin){
-                    argsList2.add("killswitch");
+                switch (args[0]){
+                    case "message":
+                        argsList2.add("on");
+                        argsList2.add("off");
+                        break;
+                    case "admin":
+                        if (!admin) break;
+                        argsList2.add("gui");
+                        argsList2.add("remove");
+                        break;
                 }
-                return argsList2;    
+
+                return argsList2;
              case 3:
                 List<String> argsList3 = new ArrayList<>();
-                if (admin){
-                    argsList3.add("on");
-                    argsList3.add("off");
+                 switch (args[1]){
+                     case "gui":
+                         if (!admin) break;
+                         argsList3.add("Item Id");
+                         break;
+                     case "remove":
+                         if (!admin) break;
+                         argsList3.add("Item Id");
+                         break;
 
-                }
+                 }
+//                if (admin){
+//                    argsList3.add("on");
+//                    argsList3.add("off");
+//
+//                }
                 return argsList3;
             default:
                 break;

@@ -1,4 +1,6 @@
 package net.waterwolf;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -12,9 +14,10 @@ import org.bukkit.persistence.PersistentDataType;
 public class FusionLib {
     public static String oldprefix = ChatColor.translateAlternateColorCodes('&',"&x&f&b&9&7&0&0&l[&x&f&d&5&b&0&0&lS&x&f&d&2&7&0&0&lG&x&f&d&2&7&0&0&l3&x&f&d&5&b&0&0&l0&x&f&b&9&7&0&0&l]&r ");
     public static String prefix = ChatColor.translateAlternateColorCodes('&',"&x&0&8&4&c&f&b&l[&x&2&b&4&1&f&7S&x&4&e&3&6&f&2G&x&7&1&2&b&e&e.&x&9&4&2&1&e&9D&x&b&7&1&6&e&5L&x&d&a&0&b&e&0L&x&f&d&0&0&d&c&l]&r");
-    public static Boolean debug = false;
+    public static Boolean debug = true;
     public static Enchantment CompressedEnchant = Enchantment.LUCK;
     public static int CompressedLevel = 1;
+
 
     public static void sendToConsole(String string, boolean usePrefix) {
         if(usePrefix) {
